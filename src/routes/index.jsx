@@ -19,9 +19,9 @@ import Contact from "../Pages/Dashboard/Contact/Contact.jsx";
 import Report from "../Pages/Dashboard/Report/Report.jsx";
 import User from "../Pages/Dashboard/UserManagement/User.jsx";
 import PostList from "../Pages/Dashboard/Post management/PostList.jsx";
-import Logo from "../Pages/Dashboard/Logo/logo.jsx";
 import Category from "../Pages/Dashboard/Category/Category.jsx";
 import Announcement from "../Pages/Dashboard/Announcement/Announcement.jsx";
+import Logo from "../Pages/Dashboard/Logo/logo.jsx";
 
 const router = createBrowserRouter([
   {
@@ -95,11 +95,6 @@ const router = createBrowserRouter([
         path: "/admin-list",
         element: <Setting />,
       },
-
-      // {
-      //   path: "/service-list",
-      //   element: <ServiceList />,
-      // },
     ],
   },
   {
