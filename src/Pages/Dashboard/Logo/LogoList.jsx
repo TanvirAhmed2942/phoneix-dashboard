@@ -9,11 +9,7 @@ import {
   message,
   Button,
 } from "antd";
-import {
-  PlusOutlined,
-  CloudUploadOutlined,
-  CloseCircleOutlined,
-} from "@ant-design/icons";
+import { CloudUploadOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import ButtonEDU from "../../../components/common/ButtonEDU";
 import blog from "../../../assets/blog.png";
 import { FiEdit2 } from "react-icons/fi";
@@ -32,11 +28,6 @@ function Logo() {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [deletingRecord, setDeletingRecord] = useState(null);
 
-  const showModal = () => {
-    setIsEditing(false);
-    setIsModalOpen(true);
-  };
-
   const handleCancel = () => {
     setIsModalOpen(false);
     form.resetFields();
@@ -51,7 +42,6 @@ function Logo() {
     }
 
     if (isEditing) {
-      // Update existing row
       const updatedData = tableData.map((item) =>
         item.key === editingKey
           ? {
@@ -63,18 +53,6 @@ function Logo() {
       );
       setTableData(updatedData);
       message.success("Logo updated successfully!");
-    } else {
-      // Add new row
-      setTableData([
-        ...tableData,
-        {
-          key: (tableData.length + 1).toString(),
-          name: values.name,
-          serial: tableData.length + 1,
-          sliderimg: uploadedImage,
-        },
-      ]);
-      message.success("Logo added successfully!");
     }
 
     handleCancel();
@@ -192,13 +170,6 @@ function Logo() {
       <div className=" py-5">
         <div className="flex justify-between items-center py-5">
           <h1 className="text-[20px] font-medium">{GetPageName()}</h1>
-          <Button
-            icon={<PlusOutlined className="mr-2" />}
-            className="bg-smart h-9 text-white px-4 py-2.5 rounded-md flex items-center"
-            onClick={showModal}
-          >
-            Add New
-          </Button>
         </div>
 
         <Table
@@ -210,7 +181,6 @@ function Logo() {
             position: ["bottomCenter"],
           }}
         />
-        {/* </ConfigProvider> */}
 
         {/* Delete Confirmation Modal */}
         <Modal
@@ -236,9 +206,9 @@ function Logo() {
           </div>
         </Modal>
 
-        {/* Modal Form */}
+        {/* Modal Form for Editing Only */}
         <Modal
-          title={isEditing ? "Edit Logo" : "Add Logo"}
+          title="Edit Logo"
           open={isModalOpen}
           onCancel={handleCancel}
           centered

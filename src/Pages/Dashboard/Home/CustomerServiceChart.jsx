@@ -141,9 +141,7 @@ function CustomerServiceChart() {
   return (
     <>
       <div className="flex items-center justify-between px-6 mt-5 relative">
-        <h1 className="text-2xl font-semibold">
-          Total User Chart (Month wise)
-        </h1>
+        <h1 className="text-2xl font-semibold">Total User Chart</h1>
         <CustomLegend />
         <PickDate />
       </div>

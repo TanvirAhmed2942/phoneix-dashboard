@@ -8,11 +8,7 @@ import {
   message,
   Button,
 } from "antd";
-import {
-  PlusOutlined,
-  CloudUploadOutlined,
-  CloseCircleOutlined,
-} from "@ant-design/icons";
+import { CloudUploadOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import { FiEdit2 } from "react-icons/fi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import ButtonEDU from "../../../components/common/ButtonEDU";
@@ -58,13 +54,6 @@ function Announcement() {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [deletingRecord, setDeletingRecord] = useState(null);
 
-  const showModal = () => {
-    setIsEditing(false);
-    form.resetFields();
-    setUploadedImage(null);
-    setIsModalOpen(true);
-  };
-
   const handleCancel = () => {
     setIsModalOpen(false);
     form.resetFields();
@@ -78,35 +67,22 @@ function Announcement() {
       return;
     }
 
-    const newData = {
-      key: isEditing ? editingKey : (tableData.length + 1).toString(),
-      serial: isEditing
-        ? tableData.find((item) => item.key === editingKey).serial
-        : tableData.length + 1,
-      announcementTitle: values.announcementTitle,
-      announcementDescription: values.announcementDescription,
-      announcementImg:
-        uploadedImage ||
-        tableData.find((item) => item.key === editingKey)?.announcementImg,
-      status: isEditing
-        ? tableData.find((item) => item.key === editingKey)?.status
-        : "Inactive",
-    };
-
-    const updatedData = isEditing
-      ? tableData.map((item) =>
-          item.key === editingKey ? { ...item, ...newData } : item
-        )
-      : [...tableData, newData];
+    const updatedData = tableData.map((item) =>
+      item.key === editingKey
+        ? {
+            ...item,
+            announcementTitle: values.announcementTitle,
+            announcementDescription: values.announcementDescription,
+            announcementImg: uploadedImage || item.announcementImg,
+          }
+        : item
+    );
 
     setTableData(updatedData);
-    message.success(
-      isEditing ? "Announcement updated!" : "Announcement added!"
-    );
+    message.success("Announcement updated!");
     handleCancel();
   };
 
-  // Direct file input handler
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -234,13 +210,6 @@ function Announcement() {
       <div className="py-5">
         <div className="flex justify-between items-center py-5">
           <h1 className="text-[20px] font-medium">{GetPageName()}</h1>
-          <Button
-            icon={<PlusOutlined />}
-            className="bg-smart text-white px-4 py-2 rounded"
-            onClick={showModal}
-          >
-            Add New
-          </Button>
         </div>
 
         <Table
@@ -274,9 +243,9 @@ function Announcement() {
           </div>
         </Modal>
 
-        {/* Add/Edit Modal */}
+        {/* Edit Modal */}
         <Modal
-          title={isEditing ? "Edit Announcement" : "Add Announcement"}
+          title="Edit Announcement"
           open={isModalOpen}
           onCancel={handleCancel}
           footer={null}
@@ -328,7 +297,7 @@ function Announcement() {
                 className="bg-smart text-white w-full"
                 size="large"
               >
-                {isEditing ? "Update" : "Add"}
+                Update
               </Button>
             </Form.Item>
           </Form>

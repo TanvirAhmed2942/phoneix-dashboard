@@ -153,7 +153,7 @@ const columns = (handleEdit, handleBan) => [
     key: "userID",
   },
   {
-    title: "Customer Name",
+    title: "User Name",
     dataIndex: "customerName",
     key: "customerName",
     render: (text, record) => (
