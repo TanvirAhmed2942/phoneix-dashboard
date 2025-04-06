@@ -253,3 +253,20 @@ p {
 .ant-menu-inline-collapsed > .ant-menu-item .ant-menu-item-icon {
   margin-top: 8px;
 }
+
+.ant-menu-light.ant-menu-submenu-popup > .ant-menu > li {
+  display: flex;
+  align-items: center;
+}
+
+.ant-menu-inline-collapsed > .ant-menu-item {
+  padding-inline: calc(50% - 15px - 4px);
+}
+
+.ant-menu .ant-menu-submenu > div {
+  display: flex;
+  align-items: center;
+}
+.ant-menu-submenu .ant-menu-submenu-vertical {
+  scale: 1.5;
+}

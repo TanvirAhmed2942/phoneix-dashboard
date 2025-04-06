@@ -16,9 +16,9 @@ const Main = () => {
       <Sidebar isCollapsed={isCollapsed} />
 
       {/* Main Content */}
-      <div className="flex flex-col flex-1 h-screen">
+      <div className="flex flex-col flex-1 h-screen ">
         <Header toggleSidebar={toggleSidebar} />
-        <div className="flex-1 p-4 bg-slate-100 overflow-clip min-h-0">
+        <div className="flex-1 p-4 bg-slate-100 sm:overflow-clip h-screen overflow-scroll">
           <Outlet />
         </div>
       </div>
