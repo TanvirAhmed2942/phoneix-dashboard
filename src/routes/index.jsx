@@ -21,7 +21,7 @@ import User from "../Pages/Dashboard/UserManagement/User.jsx";
 import PostList from "../Pages/Dashboard/Post management/PostList.jsx";
 import Category from "../Pages/Dashboard/Category/Category.jsx";
 import Announcement from "../Pages/Dashboard/Announcement/Announcement.jsx";
-import Logo from "../Pages/Dashboard/Logo/logo.jsx";
+import Logo from "../Pages/Dashboard/Logo/LogoList.jsx";
 
 const router = createBrowserRouter([
   {
