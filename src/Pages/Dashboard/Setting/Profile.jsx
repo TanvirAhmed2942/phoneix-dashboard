@@ -7,6 +7,7 @@ import { HiMiniPencil } from "react-icons/hi2";
 import { imageUrl } from "../../../redux/api/baseApi";
 
 import { useUser } from "../../../provider/User";
+import { MdCameraEnhance } from "react-icons/md";
 
 function Profile() {
   const [showButton, setShowButton] = useState(false);
@@ -61,9 +62,9 @@ function Profile() {
               }}
             >
               <button>
-                <FaFeather
+                <MdCameraEnhance
                   size={30}
-                  className="text-white absolute top-16 left-20 border rounded-full bg-smart p-1"
+                  className="text-white absolute top-20 left-24 border rounded-full bg-smart p-1"
                 />
               </button>
             </Upload>
