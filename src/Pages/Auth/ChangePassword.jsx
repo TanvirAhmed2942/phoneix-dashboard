@@ -1,7 +1,7 @@
 import { Button, Form, Input } from "antd";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import { useChangePasswordMutation } from "../../redux/apiSlices/authSlice";
+import { useChangePasswordMutation } from "../../redux/apiSlices/authApi";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 
 const ChangePassword = () => {

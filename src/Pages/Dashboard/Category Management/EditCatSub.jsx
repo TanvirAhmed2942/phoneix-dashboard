@@ -10,11 +10,6 @@ import {
   Segmented,
 } from "antd";
 import { InboxOutlined } from "@ant-design/icons";
-import {
-  useCategoryQuery,
-  useCreateCategoryMutation,
-} from "../../../redux/apiSlices/categoryApi";
-import { useCreateSubCategoryMutation } from "../../../redux/apiSlices/subCategoryApi";
 
 const { Dragger } = Upload;
 
@@ -33,21 +28,24 @@ const beforeUpload = (file) => {
   return isImage && isLt2M;
 };
 
-const CategorySubcategoryForm = ({ isSelected, initialData = null }) => {
+const EditCatSub = ({ isSelected, initialData = null }) => {
   const [form] = Form.useForm();
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedParentCategory, setSelectedParentCategory] = useState(null);
   const [imageFile, setImageFile] = useState(null);
   const [fileList, setFileList] = useState([]);
 
-  const [createCategory] = useCreateCategoryMutation();
-  const [createSubCategory] = useCreateSubCategoryMutation();
+  const categoryOptions = [
+    { value: "cat1", label: "Category 1" },
+    { value: "cat2", label: "Category 2" },
+    { value: "cat3", label: "Category 3" },
+  ];
 
-  // Fetch categories for parent category dropdown
-  const { data: categoryData } = useCategoryQuery();
-  const categories = categoryData?.data?.result || [];
-
-  // Filter main categories (no parent) and subcategories
-  const mainCategories = categories.filter((cat) => !cat.parentCategory);
+  const subCategoryOptions = [
+    { value: "subCat1", label: "Sub Category 1" },
+    { value: "subCat2", label: "Sub Category 2" },
+    { value: "subCat3", label: "Sub Category 3" },
+  ];
 
   // Handle image file changes
   const handleImageChange = ({ fileList }) => {
@@ -61,29 +59,25 @@ const CategorySubcategoryForm = ({ isSelected, initialData = null }) => {
 
   const onFinish = async (values) => {
     try {
-      const subCategoryData = {
-        name: values.subCategoryName,
-        description: values.subCategoryDesc,
+      const categoryData = {
+        name:
+          isSelected === "Category"
+            ? values.categoryName
+            : values.subCategoryName,
+        description:
+          isSelected === "Category"
+            ? values.categoryDesc
+            : values.subCategoryDesc,
         image: imageFile ? imageFile.name : "",
-        parentCategory: values.parentCategory,
       };
 
-      // If creating subcategory, call createSubCategory
-      if (isSelected === "Sub Category") {
-        await createSubCategory(subCategoryData).unwrap();
-        message.success("Subcategory created successfully!");
-      } else {
-        const categoryData = {
-          // categoryId:
-          name: values.categoryName,
-          description: values.categoryDesc,
-          image: imageFile ? imageFile.name : "",
-        };
-        await createCategory(categoryData).unwrap();
-        message.success("Category created successfully!");
+      if (isSelected === "Sub Category" && values.parentCategory) {
+        categoryData.parentCategory = values.parentCategory;
       }
 
-      // Reset form and state
+      message.success(`${isSelected} created successfully!`);
+
+      // Reset form
       form.resetFields();
       setFileList([]);
     } catch (error) {
@@ -96,6 +90,7 @@ const CategorySubcategoryForm = ({ isSelected, initialData = null }) => {
 
   const handleSelected = (value) => {
     setSelected(value);
+    console.log(value);
   };
 
   return (
@@ -125,48 +120,30 @@ const CategorySubcategoryForm = ({ isSelected, initialData = null }) => {
             layout="vertical"
             onFinish={onFinish}
             autoComplete="off"
-            onValuesChange={(changedValues) => {
-              form.setFieldsValue(changedValues); // Update right side on form change
-            }}
           >
             {/* Category Form Fields */}
-            {selected === "Category" && (
-              <>
-                <Form.Item
-                  label="Category Name"
-                  name="categoryName"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please enter the category name!",
-                    },
-                  ]}
-                >
-                  <Input />
-                </Form.Item>
-              </>
-            )}
+
+            <Form.Item
+              label="Select Category"
+              name="category"
+              rules={[{ required: true, message: "Please select a category!" }]}
+            >
+              <Select placeholder="Select Category" options={categoryOptions} />
+            </Form.Item>
 
             {/* Subcategory Form Fields */}
             {selected === "Sub Category" && (
               <>
                 <Form.Item
-                  label="Select Parent Category"
-                  name="parentCategory"
+                  label="Select Sub Category"
+                  name="subCategory"
                   rules={[
-                    {
-                      required: true,
-                      message: "Please select a parent category!",
-                    },
+                    { required: true, message: "Please select a subcategory!" },
                   ]}
                 >
                   <Select
-                    allowClear
-                    placeholder="Select Parent Category"
-                    options={mainCategories.map((cat) => ({
-                      value: cat.category.id,
-                      label: cat.category.name,
-                    }))}
+                    placeholder="Select Sub Category"
+                    options={subCategoryOptions}
                   />
                 </Form.Item>
 
@@ -234,7 +211,6 @@ const CategorySubcategoryForm = ({ isSelected, initialData = null }) => {
           </Form>
         </div>
 
-        {/* Right Side Preview */}
         <div className="w-1/3 mt-4">
           <div className="border-2 rounded-lg border-green-700 p-4 flex flex-col gap-4">
             <p>
@@ -268,17 +244,6 @@ const CategorySubcategoryForm = ({ isSelected, initialData = null }) => {
                 </p>
               </div>
             </div>
-            {selected === "Sub Category" && (
-              <div>
-                <p>
-                  Parent Category:{" "}
-                  {mainCategories.find(
-                    (cat) =>
-                      cat.category.id === form.getFieldValue("parentCategory")
-                  )?.category?.name || ""}
-                </p>
-              </div>
-            )}
           </div>
         </div>
       </div>
@@ -286,4 +251,4 @@ const CategorySubcategoryForm = ({ isSelected, initialData = null }) => {
   );
 };
 
-export default CategorySubcategoryForm;
+export default EditCatSub;

@@ -10,8 +10,7 @@ export default {
         secondary: "#7CC84E",
         base: "#4E4E4E",
         dashboard: "#023f86",
-        smart: "#18a0fb",
-
+        smart: "#0100fa",
         paragraph: "#7E7E7E",
       },
     },

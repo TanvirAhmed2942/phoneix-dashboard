@@ -5,61 +5,65 @@ import { Tree } from "antd";
 const treeData = [
   {
     title: "Category 1",
-    key: "1",
+    key: "cat-1",
     children: [
       {
-        title: "Sub Category 1",
-        key: "0-1",
+        title: "Sub Category 1.1",
+        key: "cat-1-sub-1",
       },
       {
-        title: "Sub Category 2",
-        key: "0-2",
+        title: "Sub Category 1.2",
+        key: "cat-1-sub-2",
       },
       {
-        title: "Sub Category 3",
-        key: "0-3",
+        title: "Sub Category 1.3",
+        key: "cat-1-sub-3",
       },
       {
-        title: "Sub Category 4",
-        key: "0-4",
+        title: "Sub Category 1.4",
+        key: "cat-1-sub-4",
       },
     ],
   },
   {
     title: "Category 2",
-    key: "2",
+    key: "cat-2",
     children: [
       {
-        title: "Sub Category 1",
-        key: "0-1",
+        title: "Sub Category 2.1",
+        key: "cat-2-sub-1",
       },
       {
-        title: "Sub Category 2",
-        key: "0-2",
+        title: "Sub Category 2.2",
+        key: "cat-2-sub-2",
       },
       {
-        title: "Sub Category 3",
-        key: "0-3",
+        title: "Sub Category 2.3",
+        key: "cat-2-sub-3",
       },
       {
-        title: "Sub Category 4",
-        key: "0-4",
+        title: "Sub Category 2.4",
+        key: "cat-2-sub-4",
       },
     ],
   },
 ];
+
 function CategoryList() {
   const onSelect = (selectedKeys, info) => {
-    console.log("selected", selectedKeys, info);
+    console.log("Selected keys:", selectedKeys);
+    console.log("Selected node info:", info);
   };
+
   return (
     <div>
       <Tree
         showLine
         switcherIcon={<DownOutlined />}
-        defaultExpandedKeys={["1"]}
+        defaultExpandedKeys={["cat-1"]}
         onSelect={onSelect}
         treeData={treeData}
+        className="p-4"
       />
     </div>
   );

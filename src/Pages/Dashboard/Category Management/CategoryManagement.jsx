@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Segmented } from "antd";
+import { ConfigProvider, Segmented } from "antd";
 import CategorySubcategoryForm from "./CategorySubcategoryForm";
 import CategoryList from "./CategoryList";
+import EditCatSub from "./EditCatSub";
 
 function CategoryManagement() {
-  const [selected, setSelected] = useState("Category");
+  // Default selected value is set to "Quick View"
+  const [selected, setSelected] = useState("Quick View");
 
   const handleSelected = (value) => {
     setSelected(value);
@@ -13,28 +15,40 @@ function CategoryManagement() {
 
   const ControlView = () => {
     switch (selected) {
-      case "Top View":
+      case "Quick View":
         return <CategoryList />;
-      case "Category":
-        return <CategorySubcategoryForm isSelected={selected} />;
-      case "Sub Category":
-        return <CategorySubcategoryForm isSelected={selected} />;
+      case "Add New":
+        return <CategorySubcategoryForm />;
+      case "Edit":
+        return <EditCatSub isSelected={selected} />;
       default:
         return <div>Default</div>;
     }
   };
 
   return (
-    <div>
-      <Segmented
-        options={["Top View", "Category", "Sub Category"]}
-        block
-        className="border border-smart mb-4"
-        onChange={handleSelected}
-        value={selected}
-      />
-      <ControlView />
-    </div>
+    <ConfigProvider
+      theme={{
+        components: {
+          Segmented: {
+            itemHoverBg: "#0ea5e9",
+            trackBg: "#0ea5e9",
+            itemColor: "white",
+          },
+        },
+      }}
+    >
+      <div>
+        <Segmented
+          options={["Quick View", "Add New", "Edit", "Delete"]}
+          block
+          className="border border-smart mb-4"
+          onChange={handleSelected}
+          value={selected}
+        />
+        <ControlView />
+      </div>
+    </ConfigProvider>
   );
 }
 

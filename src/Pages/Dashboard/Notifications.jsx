@@ -3,7 +3,7 @@ import { ConfigProvider, Pagination } from "antd";
 import {
   useNotificationQuery,
   useReadMutation,
-} from "../../redux/apiSlices/notificationSlice";
+} from "../../redux/apiSlices/notificationApi";
 import toast from "react-hot-toast";
 
 const Notifications = () => {
