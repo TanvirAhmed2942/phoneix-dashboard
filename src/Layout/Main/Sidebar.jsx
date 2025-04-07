@@ -11,7 +11,7 @@ import { RxDashboard } from "react-icons/rx";
 import { PiWallet } from "react-icons/pi";
 import { FiLogOut } from "react-icons/fi";
 import { RiContactsBook3Line, RiSettings5Line } from "react-icons/ri";
-import { MdOutlineReportProblem } from "react-icons/md";
+import { MdCategory, MdOutlineReportProblem } from "react-icons/md";
 import { MdOutlinePrivacyTip } from "react-icons/md";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { GrAnnounce } from "react-icons/gr";
@@ -53,6 +53,19 @@ const Sidebar = ({ isCollapsed }) => {
       ),
     },
     {
+      key: "/category-subcategory-management",
+      icon: <MdCategory size={25} />,
+      label: isCollapsed ? (
+        <Link to="/category-subcategory-management">
+          Category-Sub Cateogory
+        </Link>
+      ) : (
+        <Link to="/category-subcategory-management">
+          Category-Sub Cateogory
+        </Link>
+      ),
+    },
+    {
       key: "/transaction",
       icon: <PiWallet size={25} />,
       label: isCollapsed ? (
@@ -81,7 +94,7 @@ const Sidebar = ({ isCollapsed }) => {
     },
     {
       key: "subMenuSetting",
-      icon: <CgTemplate size={24} />,
+      icon: <CgTemplate size={`${isCollapsed ? 25 : 25}`} />,
       label: "Cms",
       children: [
         {
@@ -163,12 +176,6 @@ const Sidebar = ({ isCollapsed }) => {
         </p>
       ),
     },
-
-    // {
-    //   key: "/subscription",
-    //   icon: <HiTicket size={24} />,
-    //   label: <Link to="/subscription">Subscription</Link>,
-    // },
   ];
 
   useEffect(() => {
@@ -192,9 +199,6 @@ const Sidebar = ({ isCollapsed }) => {
       }
     }
   }, [path]);
-  // useEffect(() => {
-  //   setSelectedKey(path);
-  // }, [path]);
 
   return (
     <div

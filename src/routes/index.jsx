@@ -22,6 +22,7 @@ import PostList from "../Pages/Dashboard/Post management/PostList.jsx";
 import Category from "../Pages/Dashboard/Category/Category.jsx";
 import Announcement from "../Pages/Dashboard/Announcement/Announcement.jsx";
 import Logo from "../Pages/Dashboard/Logo/LogoList.jsx";
+import CategoryManagement from "../Pages/Dashboard/Category Management/CategoryManagement.jsx";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: "/announcement",
         element: <Announcement />,
+      },
+      {
+        path: "/category-subcategory-management",
+        element: <CategoryManagement />,
       },
       {
         path: "/faq",
