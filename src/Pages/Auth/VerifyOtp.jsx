@@ -30,15 +30,15 @@ const VerifyOtp = () => {
           <OTPInput
             value={otp}
             onChange={setOtp}
-            numInputs={4}
+            numInputs={6}
             inputStyle={{
               height: 50,
               width: 50,
               borderRadius: "8px",
               margin: "16px",
               fontSize: "20px",
-              border: "1px solid #18a0fb ",
-              color: "#18a0fb",
+              border: "2px solid #0100fa  ",
+              color: "#0100fa ",
               outline: "none",
               marginBottom: 10,
             }}
@@ -51,8 +51,7 @@ const VerifyOtp = () => {
 
           <p
             onClick={handleResendEmail}
-            className="login-form-forgot font-medium"
-            style={{ color: "#18a0fb ", cursor: "pointer" }}
+            className="login-form-forgot text-smart font-medium cursor-pointer "
           >
             Resend
           </p>
@@ -62,14 +61,9 @@ const VerifyOtp = () => {
           <Button
             htmlType="submit"
             style={{
-              width: "100%",
               height: 45,
-              border: "1px solid #18a0fb ",
-              outline: "none",
-              boxShadow: "none",
-              background: "#18a0fb ",
-              color: "white",
             }}
+            className="w-full bg-smart text-[18px] border-none text-white outline-none "
           >
             Verify
           </Button>

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaRegBell } from "react-icons/fa6";
-import { Badge, Avatar, ConfigProvider, Flex, Dropdown } from "antd";
+import { Badge, Avatar, ConfigProvider, Flex, Dropdown, Popover } from "antd";
 import { useUser } from "../../provider/User";
 import { CgMenu } from "react-icons/cg";
 import { UserOutlined, DownOutlined } from "@ant-design/icons";
-
+import NotificationPopover from "../../Pages/Dashboard/Notification/NotificationPopover";
+import { RiSettings5Line, RiShutDownLine } from "react-icons/ri";
 const Header = ({ toggleSidebar }) => {
   const { user } = useUser();
   const src = user?.image?.startsWith("https")
@@ -18,10 +19,29 @@ const Header = ({ toggleSidebar }) => {
     console.log("Selected Language:", value);
   };
 
-  const userMenuItems = [
-    { label: <Link to="/auth/login">Log Out</Link>, key: "logout" },
-  ];
-
+  const userMenuContent = (
+    <div>
+      {" "}
+      <div className="mr-4 flex gap-2.5 font-semibold hover:text-black cursor-pointer">
+        {`${user?.firstName} ${user?.lastName}`}
+      </div>
+      <p>Super Admin</p>
+      <Link
+        to="/admin-list"
+        className="flex items-center gap-2 py-1 mt-1  text-black hover:text-smart"
+      >
+        <RiSettings5Line className="animate-spin " />
+        <span>Setting</span>
+      </Link>
+      <Link
+        to="/auth/login"
+        className="flex items-center gap-2 py-1  text-black hover:text-smart"
+      >
+        <RiShutDownLine />
+        <span>Log Out</span>
+      </Link>
+    </div>
+  );
   return (
     <ConfigProvider
       theme={{
@@ -51,28 +71,40 @@ const Header = ({ toggleSidebar }) => {
 
         <Flex align="center" gap={30} justify="flex-end" className="w-full">
           {/* Notification Badge */}
-          <div className="w-8 h-8 bg-[#cfd4ff] flex items-center justify-center p-6 rounded-md relative">
-            <Link to="/notification" className="flex">
-              <FaRegBell size={30} className="relative text-smart" />
-              <Badge dot className="absolute top-[30%] left-[55%]" />
-            </Link>
-          </div>
+          <Popover
+            content={<NotificationPopover />}
+            trigger="click"
+            arrow={false}
+            placement="bottom"
+          >
+            <div className="w-14 h-14 bg-[#cfd4ff] flex items-center justify-center rounded-md relative cursor-pointer">
+              <FaRegBell size={30} className="text-smart" />
+              <Badge
+                count={2}
+                overflowCount={5}
+                size="small"
+                color="red"
+                className="absolute top-2 right-3 "
+              />
+            </div>
+          </Popover>
+
           {/* User Profile */}
-          <Link to="/admin-list" className="flex items-center gap-3">
-            <Avatar shape="square" size={60} className="rounded" src={src} />
-          </Link>
-          {/* Dropdown Menu */}
-          <Flex vertical align="start">
-            <Dropdown menu={{ items: userMenuItems }} trigger={["click"]}>
-              <a onClick={(e) => e.preventDefault()}>
-                <div className="mr-4 flex gap-2.5 font-semibold hover:text-black">
-                  {`${user?.firstName} ${user?.lastName}`}
-                  <DownOutlined />
-                </div>
-              </a>
-            </Dropdown>
-            <p>Super Admin</p>
-          </Flex>
+
+          {/* Popover Menu */}
+          <Popover
+            content={userMenuContent}
+            trigger="click"
+            arrow={false}
+            placement="bottomLeft"
+          >
+            <Avatar
+              shape="square"
+              size={60}
+              className="rounded cursor-pointer"
+              src={src}
+            />
+          </Popover>
         </Flex>
       </Flex>
     </ConfigProvider>

@@ -61,28 +61,7 @@ function Report() {
   };
 
   return (
-    <ConfigProvider
-      theme={{
-        components: {
-          Table: {
-            rowSelectedBg: "#f6f6f6",
-            headerBg: "#f6f6f6",
-            headerSplitColor: "none",
-            headerBorderRadius: "none",
-            cellFontSize: "16px",
-          },
-          Pagination: {
-            borderRadius: "3px",
-            itemActiveBg: "#18a0fb",
-          },
-          Button: {
-            defaultHoverBg: "#18a0fb ",
-            defaultHoverColor: "white",
-            defaultHoverBorderColor: "#18a0fb ",
-          },
-        },
-      }}
-    >
+    <>
       <div className="flex justify-between items-center py-5">
         <h1 className="text-[20px] font-medium">Report Issues</h1>
         <div className="flex gap-3">
@@ -135,7 +114,7 @@ function Report() {
           record={selectedRecord}
         />
       )}
-    </ConfigProvider>
+    </>
   );
 }
 

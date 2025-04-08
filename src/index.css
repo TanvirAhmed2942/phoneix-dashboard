@@ -286,7 +286,7 @@ p {
 /* Ant Design - Table                   */
 /* ------------------------------------ */
 .ant-table-wrapper .ant-table-tbody > tr > td {
-  color: #929394;
+  color: black;
 }
 
 .ant-table-row:nth-child(even) {
@@ -303,10 +303,10 @@ p {
 /* ------------------------------------ */
 /* Ant Design - Badge                   */
 /* ------------------------------------ */
-.ant-badge .ant-badge-count {
-  background: #007ba5 !important;
+/* .ant-badge .ant-badge-count {
+  background: red !important;
   color: white !important;
-}
+} */
 
 /* ------------------------------------ */
 /* Ant Design - Card                   */

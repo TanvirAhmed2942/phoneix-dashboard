@@ -131,7 +131,6 @@ const columns = (handleEdit, handleBan) => [
     title: "User ID",
     dataIndex: "userID",
     key: "userID",
-    render: (text) => <span className="text-black">{text}</span>,
   },
   {
     title: "User Name",
@@ -153,25 +152,21 @@ const columns = (handleEdit, handleBan) => [
     title: "Subscription Type",
     dataIndex: "subscriptionType",
     key: "subscriptionType",
-    render: (text) => <span className="text-black">{text}</span>,
   },
   {
     title: "Total Post",
     dataIndex: "totalPost",
     key: "totalPost",
-    render: (text) => <span className="text-black">{text}</span>,
   },
   {
     title: "Join Date",
     dataIndex: "joinDate",
     key: "joinDate",
-    render: (text) => <span className="text-black">{text}</span>,
   },
   {
     title: "Status",
     dataIndex: "status",
     key: "status",
-    render: (text) => <span className="text-black">{text}</span>,
   },
   {
     key: "action",

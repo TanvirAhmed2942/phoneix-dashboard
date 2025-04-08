@@ -9,9 +9,9 @@ import man from "../../../assets/man.png";
 
 // ✅ UserAvatar Component — now receives the image correctly
 const UserAvatar = ({ name, image }) => (
-  <div className="flex gap-2 items-center">
+  <div className="flex gap-2 items-center ">
     <Avatar shape="circle" size={30} src={image} />
-    <p>{name}</p>
+    <p className="text-black">{name}</p>
   </div>
 );
 
@@ -142,7 +142,9 @@ function Transaction() {
       title: "Date",
       dataIndex: "date",
       key: "date",
-      render: (date) => <p>{new Date(date).toLocaleDateString()}</p>,
+      render: (date) => (
+        <p className="text-black">{new Date(date).toLocaleDateString()}</p>
+      ),
     },
     {
       title: "Actions",
@@ -166,27 +168,7 @@ function Transaction() {
   ];
 
   return (
-    <ConfigProvider
-      theme={{
-        components: {
-          Table: {
-            rowSelectedBg: "#f6f6f6",
-            headerBg: "#f6f6f6",
-            headerSplitColor: "none",
-            headerBorderRadius: "none",
-          },
-          Pagination: {
-            borderRadius: "3px",
-            itemActiveBg: "#18a0fb",
-          },
-          Button: {
-            defaultHoverBg: "#18a0fb",
-            defaultHoverColor: "white",
-            defaultHoverBorderColor: "#18a0fb",
-          },
-        },
-      }}
-    >
+    <>
       <Head
         onSearch={handleSearch}
         pagename="Transactions"
@@ -209,7 +191,7 @@ function Transaction() {
         }}
         showSorterTooltip={{ target: "sorter-icon" }}
       />
-    </ConfigProvider>
+    </>
   );
 }
 
@@ -218,49 +200,37 @@ export default Transaction;
 // ✅ Head Component
 function Head({ onSearch, selectedRowKeys, handleDelete, filteredData }) {
   return (
-    <ConfigProvider
-      theme={{
-        components: {
-          Button: {
-            defaultHoverBg: "#18a0fb",
-            defaultHoverColor: "white",
-            defaultHoverBorderColor: "#18a0fb",
-          },
-        },
-      }}
-    >
-      <div className="flex justify-between items-center py-5">
-        <h1 className="text-[20px] font-medium">{GetPageName()}</h1>
+    <div className="flex justify-between items-center py-5">
+      <h1 className="text-[20px] font-medium">{GetPageName()}</h1>
 
-        <div className="flex gap-3 items-center">
-          <Input
-            placeholder="Search by Recipient, Occasion, Price, or Status"
-            onChange={(e) => onSearch(e.target.value)}
-            prefix={<SearchOutlined />}
-            className="h-9 gap-2"
-            allowClear
-          />
+      <div className="flex gap-3 items-center">
+        <Input
+          placeholder="Search by Recipient, Occasion, Price, or Status"
+          onChange={(e) => onSearch(e.target.value)}
+          prefix={<SearchOutlined />}
+          className="h-[38px] gap-2"
+          allowClear
+        />
 
-          {selectedRowKeys.length > 1 && (
-            <Button
-              onClick={handleDelete}
-              icon={<DeleteOutlined />}
-              className="bg-[#18a0fb] text-white border-none h-9"
-            >
-              {selectedRowKeys.length === filteredData.length
-                ? "Delete All"
-                : "Delete Selected"}
-            </Button>
-          )}
-
+        {selectedRowKeys.length > 1 && (
           <Button
-            icon={<LuDownload size={20} />}
-            className="bg-[#f1f1f1] hover:bg-smart text-black border h-9"
+            onClick={handleDelete}
+            icon={<DeleteOutlined />}
+            className="bg-[#18a0fb] text-white border-none h-9"
           >
-            Export
+            {selectedRowKeys.length === filteredData.length
+              ? "Delete All"
+              : "Delete Selected"}
           </Button>
-        </div>
+        )}
+
+        <Button
+          icon={<LuDownload size={20} />}
+          className="bg-smart hover:bg-smart text-white border-none h-9"
+        >
+          Export
+        </Button>
       </div>
-    </ConfigProvider>
+    </div>
   );
 }

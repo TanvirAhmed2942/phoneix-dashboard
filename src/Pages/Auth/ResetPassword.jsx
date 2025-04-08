@@ -44,25 +44,23 @@ const ResetPassword = () => {
                 message: "Please input your new Password!",
               },
             ]}
-            style={{ marginBottom: 0 }}
+            style={{ marginBottom: "16px" }}
           >
             <Input.Password
               type="password"
               placeholder="Enter New password"
               style={{
                 border: "1px solid #E0E4EC",
-                height: "52px",
+                height: 45,
                 background: "white",
                 borderRadius: "8px",
-
                 outline: "none",
               }}
-              className="mb-6"
             />
           </Form.Item>
 
           <Form.Item
-            style={{ marginBottom: 0 }}
+            style={{ marginBottom: "16px" }}
             label={
               <p
                 style={{
@@ -99,28 +97,24 @@ const ResetPassword = () => {
               placeholder="Enter Confirm password"
               style={{
                 border: "1px solid #E0E4EC",
-                height: "52px",
+                height: 45,
                 background: "white",
                 borderRadius: "8px",
                 outline: "none",
               }}
-              className="mb-6"
+              className=""
             />
           </Form.Item>
 
-          <Form.Item style={{ marginBottom: 0 }}>
+          <Form.Item style={{ marginBottom: "16px" }}>
+            {" "}
+            {/* Same margin for button */}
             <Button
               htmlType="submit"
               style={{
-                width: "100%",
                 height: 45,
-                color: "white",
-                fontWeight: "400px",
-                fontSize: "18px",
-                border: "1px solid #18a0fb",
-                background: "#18a0fb ",
-                marginTop: 20,
               }}
+              className="w-full bg-smart text-[18px] font-normal border-none text-white outline-none mt-4"
             >
               Update
             </Button>

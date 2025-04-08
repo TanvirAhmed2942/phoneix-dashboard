@@ -51,25 +51,21 @@ function PostList() {
       title: "Post ID",
       dataIndex: "postID",
       key: "postID",
-      render: (text) => <span className="text-black">{text}</span>,
     },
     {
       title: "Title",
       dataIndex: "title",
       key: "title",
-      render: (text) => <span className="text-black">{text}</span>,
     },
     {
       title: "Author",
       dataIndex: "author",
       key: "author",
-      render: (text) => <span className="text-black">{text}</span>,
     },
     {
       title: "Status",
       dataIndex: "status",
       key: "status",
-      render: (text) => <span className="text-black">{text}</span>,
     },
     {
       key: "action",
