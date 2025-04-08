@@ -27,7 +27,7 @@ const Header = ({ toggleSidebar }) => {
       </div>
       <p>Super Admin</p>
       <Link
-        to="/admin-list"
+        to="/settings"
         className="flex items-center gap-2 py-1 mt-1  text-black hover:text-smart"
       >
         <RiSettings5Line className="animate-spin " />
