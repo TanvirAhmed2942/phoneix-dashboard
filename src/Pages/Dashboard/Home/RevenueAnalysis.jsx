@@ -8,8 +8,7 @@ import {
   ResponsiveContainer,
   CartesianGrid,
 } from "recharts";
-import { MdOutlineDateRange } from "react-icons/md";
-import { DatePicker } from "antd";
+
 import PickDate from "../../../components/common/PickDate";
 
 function generateRandomData() {
@@ -58,8 +57,8 @@ export default function RevenueAnalysis() {
         >
           <defs>
             <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#18A0FB" stopOpacity={1} />
-              <stop offset="100%" stopColor="#18A0FB" stopOpacity={0} />
+              <stop offset="0%" stopColor="#0100fa" stopOpacity={1} />
+              <stop offset="100%" stopColor="#0100fa" stopOpacity={0} />
             </linearGradient>
           </defs>
           <CartesianGrid

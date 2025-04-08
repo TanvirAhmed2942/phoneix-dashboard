@@ -68,28 +68,7 @@ function User() {
   };
 
   return (
-    <ConfigProvider
-      theme={{
-        components: {
-          Table: {
-            rowSelectedBg: "#f6f6f6",
-            headerBg: "#f6f6f6",
-            headerSplitColor: "none",
-            headerBorderRadius: "none",
-            cellFontSize: "16px",
-          },
-          Pagination: {
-            borderRadius: "3px",
-            itemActiveBg: "#18a0fb",
-          },
-          Button: {
-            defaultHoverBg: "#18a0fb ",
-            defaultHoverColor: "white",
-            defaultHoverBorderColor: "#18a0fb ",
-          },
-        },
-      }}
-    >
+    <>
       <div className="flex justify-between items-center py-5">
         <h1 className="text-[20px] font-medium">{GetPageName()}</h1>
         <div className="flex gap-3">
@@ -97,7 +76,7 @@ function User() {
             placeholder="Search by Name, Email or Phone"
             onChange={(e) => handleSearch(e.target.value)}
             prefix={<SearchOutlined />}
-            className="h-9 gap-2"
+            className="h-[37px] gap-2 border"
             allowClear
           />
           {selectedRowKeys.length > 0 && (
@@ -112,7 +91,7 @@ function User() {
           <Button
             icon={<LuDownload size={20} />}
             onClick={handleDeleteSelected}
-            className="bg-[#f1f1f1] hover:bg-smart text-black border h-9"
+            className="bg-smart hover:bg-smart text-white border-none h-9"
           >
             Export
           </Button>
@@ -123,6 +102,7 @@ function User() {
         rowSelection={rowSelection}
         columns={columns(handleEdit, handleBan)} // Pass handleEdit and handleBan to columns
         dataSource={filteredData}
+        rowClassName={() => "text-black"}
         size="middle"
         pagination={{
           defaultPageSize: 5,
@@ -140,7 +120,7 @@ function User() {
         providerData={selectedProvider}
         onSave={handleSave}
       />
-    </ConfigProvider>
+    </>
   );
 }
 
@@ -151,17 +131,17 @@ const columns = (handleEdit, handleBan) => [
     title: "User ID",
     dataIndex: "userID",
     key: "userID",
+    render: (text) => <span className="text-black">{text}</span>,
   },
   {
     title: "User Name",
     dataIndex: "customerName",
     key: "customerName",
     render: (text, record) => (
-      <div className="flex items-center gap-2.5 ">
+      <div className="flex items-center gap-2.5 text-black">
         <div className="border rounded-full">
           <Avatar src={record.avatar} alt={text} shape="circle" size={40} />
         </div>
-
         <div className="flex flex-col">
           <span>{text}</span>
           <span>{record.email}</span>
@@ -169,34 +149,36 @@ const columns = (handleEdit, handleBan) => [
       </div>
     ),
   },
-
   {
     title: "Subscription Type",
     dataIndex: "subscriptionType",
     key: "subscriptionType",
+    render: (text) => <span className="text-black">{text}</span>,
   },
   {
     title: "Total Post",
     dataIndex: "totalPost",
     key: "totalPost",
+    render: (text) => <span className="text-black">{text}</span>,
   },
   {
     title: "Join Date",
     dataIndex: "joinDate",
     key: "joinDate",
+    render: (text) => <span className="text-black">{text}</span>,
   },
   {
     title: "Status",
     dataIndex: "status",
     key: "status",
+    render: (text) => <span className="text-black">{text}</span>,
   },
   {
-    // title: "Action",
     key: "action",
     render: (text, record) => (
       <PopOver
         onEdit={() => handleEdit(record)}
-        onBan={() => handleBan(record)} // Pass the handleBan function
+        onBan={() => handleBan(record)}
       />
     ),
   },

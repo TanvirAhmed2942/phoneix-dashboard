@@ -19,10 +19,10 @@ function PickDate() {
         <div
           className="rounded-full w-6 h-6 p-1 flex items-center justify-center"
           style={{
-            backgroundColor: isDateSelected ? "#18a0fb" : "#c3e3f7",
+            backgroundColor: isDateSelected ? "#0100fa" : "#bbbbfa",
           }}
         >
-          <MdOutlineDateRange color={isDateSelected ? "white" : "#18a0fb"} />
+          <MdOutlineDateRange color={isDateSelected ? "white" : "#0100fa"} />
         </div>
       }
     />

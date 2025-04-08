@@ -51,21 +51,25 @@ function PostList() {
       title: "Post ID",
       dataIndex: "postID",
       key: "postID",
+      render: (text) => <span className="text-black">{text}</span>,
     },
     {
       title: "Title",
       dataIndex: "title",
       key: "title",
+      render: (text) => <span className="text-black">{text}</span>,
     },
     {
       title: "Author",
       dataIndex: "author",
       key: "author",
+      render: (text) => <span className="text-black">{text}</span>,
     },
     {
       title: "Status",
       dataIndex: "status",
       key: "status",
+      render: (text) => <span className="text-black">{text}</span>,
     },
     {
       key: "action",
@@ -83,28 +87,7 @@ function PostList() {
   ];
 
   return (
-    <ConfigProvider
-      theme={{
-        components: {
-          Table: {
-            rowSelectedBg: "#f6f6f6",
-            headerBg: "#f6f6f6",
-            headerSplitColor: "none",
-            headerBorderRadius: "none",
-            cellFontSize: "16px",
-          },
-          Pagination: {
-            borderRadius: "3px",
-            itemActiveBg: "#18a0fb",
-          },
-          Button: {
-            defaultHoverBg: "#18a0fb",
-            defaultHoverColor: "white",
-            defaultHoverBorderColor: "#18a0fb",
-          },
-        },
-      }}
-    >
+    <>
       <div className="flex justify-between items-center py-5">
         <h1 className="text-[20px] font-medium">{GetPageName()}</h1>
         <div className="flex gap-3">
@@ -112,7 +95,7 @@ function PostList() {
             placeholder="Search by Title or Author"
             onChange={(e) => handleSearch(e.target.value)}
             prefix={<SearchOutlined />}
-            className="h-9 gap-2"
+            className="h-[37px] gap-2 border"
             allowClear
           />
           {selectedRowKeys.length > 0 && (
@@ -127,28 +110,40 @@ function PostList() {
           <Button
             icon={<LuDownload size={20} />}
             onClick={handleExport}
-            className="bg-[#f1f1f1] hover:bg-smart text-black border h-9"
+            className="bg-smart hover:bg-smart text-white border-none h-9"
           >
             Export
           </Button>
         </div>
       </div>
 
-      <Table
-        rowSelection={rowSelection}
-        columns={columns}
-        dataSource={filteredData}
-        size="middle"
-        pagination={{
-          defaultPageSize: 5,
-          position: ["bottomRight"],
-          size: "default",
-          total: filteredData.length,
-          showSizeChanger: false,
-          showQuickJumper: false,
+      <ConfigProvider
+        theme={{
+          components: {
+            Table: {
+              headerBg: "#f0f0f0",
+              headerColor: "#000000",
+            },
+          },
         }}
-      />
-    </ConfigProvider>
+      >
+        <Table
+          rowSelection={rowSelection}
+          columns={columns}
+          dataSource={filteredData}
+          size="middle"
+          className="text-black"
+          pagination={{
+            defaultPageSize: 5,
+            position: ["bottomRight"],
+            size: "default",
+            total: filteredData.length,
+            showSizeChanger: false,
+            showQuickJumper: false,
+          }}
+        />
+      </ConfigProvider>
+    </>
   );
 }
 

@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 import { IoTrendingUp, IoTrendingDown } from "react-icons/io5";
-import CustomerServiceChart from "./CustomerServiceChart";
+import CustomerServiceChart from "./TotalUserChart";
 import RevenueAnalysis from "./RevenueAnalysis";
 import TinyChart from "./TinyChart";
+import TotalUserChart from "./TotalUserChart";
 dayjs.extend(customParseFormat);
 
 const stats = [
@@ -72,7 +73,7 @@ const Home = () => {
       </div>
 
       <div className="w-full h-[330px]  bg-white rounded-lg mt-4 relative flex flex-col justify-evenly">
-        <CustomerServiceChart />
+        <TotalUserChart />
       </div>
       <div className="w-full h-[300px] mt-4 flex items-center justify-between bg-transparent rounded-lg">
         <RevenueAnalysis />

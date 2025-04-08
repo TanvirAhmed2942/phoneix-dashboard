@@ -10,7 +10,7 @@ import {
 } from "recharts";
 import PickDate from "../../../components/common/PickDate";
 
-function CustomerServiceChart() {
+function TotalUserChart() {
   const [visibleBars, setVisibleBars] = useState({
     Customer: true,
     Revenue: true,
@@ -38,64 +38,6 @@ function CustomerServiceChart() {
     });
   };
 
-  // Custom radio button legend
-  // const CustomLegend = () => {
-  //   return (
-  //     <div className="flex items-center justify-center gap-8  absolute top-1 right-[40%]">
-  //       <div className="flex items-center gap-2">
-  //         <input
-  //           type="radio"
-  //           id="customerRadio"
-  //           name="legendRadio"
-  //           checked={visibleBars.Customer && !visibleBars.Revenue}
-  //           onChange={() => setVisibleBars({ Customer: true, Revenue: false })}
-  //           className="cursor-pointer hidden "
-  //         />
-  //         <label
-  //           htmlFor="customerRadio"
-  //           className="flex items-center cursor-pointer"
-  //         >
-  //           <span className="inline-block w-4 h-4 mr-2 bg-smart rounded-full"></span>
-  //           User
-  //         </label>
-  //       </div>
-  //       <div className="flex items-center gap-2">
-  //         <input
-  //           type="radio"
-  //           id="RevenueRadio"
-  //           name="legendRadio"
-  //           checked={!visibleBars.Customer && visibleBars.Revenue}
-  //           onChange={() => setVisibleBars({ Customer: false, Revenue: true })}
-  //           className="cursor-pointer hidden"
-  //         />
-  //         <label
-  //           htmlFor="RevenueRadio"
-  //           className="flex items-center cursor-pointer"
-  //         >
-  //           <span className="inline-block w-4 h-4 mr-2 bg-[#b6e2fd] rounded-full"></span>
-  //           Revenue
-  //         </label>
-  //       </div>
-  //       <div className="flex items-center gap-2">
-  //         <input
-  //           type="radio"
-  //           id="bothRadio"
-  //           name="legendRadio"
-  //           checked={visibleBars.Customer && visibleBars.Revenue}
-  //           onChange={() => setVisibleBars({ Customer: true, Revenue: true })}
-  //           className="cursor-pointer hidden"
-  //         />
-  //         <label
-  //           htmlFor="bothRadio"
-  //           className="flex items-center cursor-pointer"
-  //         >
-  //           <span className="inline-block w-4 h-4 mr-2 bg-gray-300 rounded"></span>
-  //           All
-  //         </label>
-  //       </div>
-  //     </div>
-  //   );
-  // };
   const CustomLegend = () => {
     return (
       <div className="flex items-center justify-center gap-8 absolute top-1 right-[40%]">
@@ -111,7 +53,7 @@ function CustomerServiceChart() {
           <span
             className="inline-block w-4 h-4 mr-2 rounded-full"
             style={{
-              backgroundColor: visibleBars.Customer ? "#18A0FB" : "#e5e7eb",
+              backgroundColor: visibleBars.Customer ? "#0100fa" : "#e5e7eb",
             }}
           ></span>
           <span>User</span>
@@ -129,7 +71,7 @@ function CustomerServiceChart() {
           <span
             className="inline-block w-4 h-4 mr-2 rounded-full"
             style={{
-              backgroundColor: visibleBars.Revenue ? "#B7E2FE" : "#e5e7eb",
+              backgroundColor: visibleBars.Revenue ? "#bbbbfa" : "#e5e7eb",
             }}
           ></span>
           <span>Revenue</span>
@@ -165,10 +107,10 @@ function CustomerServiceChart() {
               cursor={false}
             />
             {visibleBars.Customer && (
-              <Bar dataKey="Customer" fill="#18A0FB" barSize={35} radius={4} />
+              <Bar dataKey="Customer" fill="#0100fa" barSize={35} radius={4} />
             )}
             {visibleBars.Revenue && (
-              <Bar dataKey="Revenue" fill="#B7E2FE" barSize={35} radius={4} />
+              <Bar dataKey="Revenue" fill="#bbbbfa" barSize={35} radius={4} />
             )}
           </BarChart>
         </ResponsiveContainer>
@@ -177,42 +119,7 @@ function CustomerServiceChart() {
   );
 }
 
-export default CustomerServiceChart;
-
-// const CustomTooltip = ({ active, payload, label }) => {
-//   if (active && payload && payload.length) {
-//     return (
-//       <div className="relative flex items-center ml-4">
-//         {/* Arrow (pointing left) */}
-//         <div
-//           className="absolute w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-r-8 -left-1.5"
-//           style={{
-//             borderRightColor:
-//               payload[0].dataKey === "Customer" ? "#18A0FB" : "#B7E2FE",
-//           }}
-//         ></div>
-
-//         {/* Tooltip Content */}
-//         <div className="bg-smart p-2 text-white rounded shadow-md">
-//           {payload.map((pld, index) => (
-//             <div
-//               key={index}
-//               className="px-1 py-.5 rounded text-[14px] text-black"
-//               style={{
-//                 backgroundColor:
-//                   pld.dataKey === "Customer" ? "#18A0FB" : "#B7E2FE",
-//               }}
-//             >
-//               Total User : {pld.value}K
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-//     );
-//   }
-
-//   return null;
-// };
+export default TotalUserChart;
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
@@ -221,7 +128,7 @@ const CustomTooltip = ({ active, payload, label }) => {
         <div className="font-semibold text-gray-700 mb-1">Month: {label}</div>
         {payload.map((pld, index) => {
           const isCustomer = pld.dataKey === "Customer";
-          const color = isCustomer ? "#18A0FB" : "#B7E2FE";
+          const color = isCustomer ? "#0100fa" : "#bbbbfa";
           const labelText = isCustomer ? "Total Users" : "Total Revenue";
 
           return (

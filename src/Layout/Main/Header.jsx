@@ -45,15 +45,15 @@ const Header = ({ toggleSidebar }) => {
           <CgMenu
             size={40}
             onClick={toggleSidebar}
-            className="cursor-pointer text-sky-500"
+            className="cursor-pointer text-smart"
           />
         </div>
 
         <Flex align="center" gap={30} justify="flex-end" className="w-full">
           {/* Notification Badge */}
-          <div className="w-8 h-8 bg-[#e0f1fc] flex items-center justify-center p-6 rounded-md relative">
+          <div className="w-8 h-8 bg-[#cfd4ff] flex items-center justify-center p-6 rounded-md relative">
             <Link to="/notification" className="flex">
-              <FaRegBell color="#18a0fb" size={30} className="relative " />
+              <FaRegBell size={30} className="relative text-smart" />
               <Badge dot className="absolute top-[30%] left-[55%]" />
             </Link>
           </div>

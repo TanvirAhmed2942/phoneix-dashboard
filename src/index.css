@@ -1,258 +1,3 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-* {
-  font-family: "Poppins", sans-serif;
-  padding: 0;
-  margin: 0;
-}
-p {
-  font-size: 14px;
-  line-height: 20px;
-  font-family: "poppins";
-  font-weight: 400;
-  color: #737791;
-}
-
-.ant-space-gap-col-small {
-  column-gap: 12px;
-}
-.ant-space-gap-col-small:hover {
-  font-weight: 600;
-  color: Black !important;
-}
-
-.ant-card .ant-card-head {
-  border-bottom: 1px solid grey !important;
-  min-height: 60px !important;
-}
-
-.ant-pagination .ant-pagination-item-active {
-  font-weight: 600;
-  background-color: #18a0fb;
-  border: none !important;
-  color: #ffffff !important;
-}
-
-.ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
-  margin-top: 20px;
-  color: white;
-  font-size: large;
-}
-:where(.css-dev-only-do-not-override-11lehqq).ant-collapse-borderless
-  > .ant-collapse-item
-  > .ant-collapse-content {
-  border-bottom: 2px solid #535353;
-  margin-left: 60px;
-}
-
-.ant-modal-footer {
-  margin-top: 0 !important;
-}
-
-.ant-menu-item:hover {
-  background-color: #929396;
-}
-.ant-menu
-  .ant-menu-submenu-open.ant-menu-submenu-inline
-  > .ant-menu-submenu-title
-  > .ant-menu-submenu-arrow {
-  color: black;
-}
-.ant-menu .ant-menu-submenu-arrow {
-  color: #000;
-}
-.ant-menu-light.ant-menu-submenu-popup > .ant-menu > li {
-  display: flex;
-  align-items: center;
-}
-.ant-menu-item .ant-menu-item-selected {
-  background-color: #007ba5 !important;
-  color: #222222 !important;
-}
-.ant-menu-item .ant-menu-item-active .ant-menu-item-selected {
-  background-color: #007ba5 !important;
-  color: #ffffff !important;
-}
-.ant-menu-light .ant-menu-item-selected a {
-  color: black !important;
-}
-
-.ant-menu-item-selected {
-  background-color: #e8f6ff !important;
-  color: #18a0fb !important;
-}
-.ant-menu-light .ant-menu-item-selected a {
-  color: #18a0fb !important;
-}
-.ant-menu-title-content {
-  color: black !important;
-}
-
-.ant-menu .ant-menu-item .ant-menu-item-icon + span {
-  transition: none !important;
-}
-.ant-menu-item-icon {
-  font-size: xx-large;
-  font-weight: bolder;
-}
-
-.ant-menu-light .ant-menu-submenu-selected > .ant-menu-submenu-title {
-  color: white !important;
-}
-
-.ant-menu .ant-menu-title-content {
-  transition: none !important;
-}
-
-.ant-input-outlined {
-  outline: none;
-}
-
-.ant-badge .ant-badge-count {
-  background: #007ba5 !important;
-  color: white !important;
-}
-
-.jodit-workplace {
-  height: 550px !important;
-}
-
-.ant-menu .ant-menu-submenu-title .ant-menu-item-icon {
-  color: black !important;
-}
-
-.ant-menu .ant-menu-submenu-title {
-  color: black !important;
-}
-
-.ant-collapse > .ant-collapse-item {
-  border-bottom: none;
-}
-.ant-collapse
-  > .ant-collapse-item
-  > .ant-collapse-header
-  .ant-collapse-header-text {
-  padding: 10px;
-}
-.ant-collapse-borderless > .ant-collapse-item > .ant-collapse-content {
-  border-bottom: none;
-  margin-left: 60px;
-}
-.ant-collapse > .ant-collapse-item {
-  border-bottom: 1px solid rgba(226, 226, 226, 0.8);
-}
-
-.ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
-  padding: 20px;
-}
-
-.ant-card .ant-card-head {
-  border-bottom: none;
-  min-height: 120px;
-}
-.ant-card-head-title {
-  color: white !important;
-}
-:where(.css-dev-only-do-not-override-1qeagc6).ant-card:not(.ant-card-bordered) {
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
-}
-
-.ant-table-wrapper .ant-table-tbody > tr > td {
-  color: "#929394";
-}
-
-.ant-upload-wrapper.ant-upload-picture-card-wrapper
-  .ant-upload.ant-upload-select {
-  width: 100%;
-  height: 130px;
-  background-color: #ffffff;
-}
-
-.jodit-container:not(.jodit_inline) {
-  border-radius: 5px;
-}
-
-.jodit .jodit-workplace .jodit-wysiwyg,
-.jodit .jodit-workplace .jodit-wysiwyg_iframe,
-.jodit-container .jodit-workplace .jodit-wysiwyg,
-.jodit-container .jodit-workplace {
-  border-radius: 5px;
-}
-
-.ant-pagination .ant-pagination-item a {
-  color: white !important;
-  border: none !important;
-}
-
-.ant-pagination .ant-pagination-item a:hover {
-  background-color: white !important;
-  color: black !important;
-  border: none !important;
-}
-.ant-table-row:nth-child(even) {
-  background-color: #f7f7f7;
-}
-
-:where(.css-dev-only-do-not-override-1p39ys8).ant-pagination
-  .ant-pagination-item {
-  display: inline-block;
-  min-width: 32px;
-  height: 32px;
-  margin-inline-end: 8px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  line-height: 30px;
-  text-align: center;
-  vertical-align: middle;
-  list-style: none;
-  background-color: #dcdcdc;
-  border: 1px solid transparent;
-  border-radius: 3px;
-  outline: 0;
-  cursor: pointer;
-  user-select: none;
-}
-.ant-pagination .ant-pagination-item a {
-  color: #000 !important;
-  border: none !important;
-}
-
-.ant-menu-inline-collapsed > .ant-menu-item .ant-menu-item-icon {
-  margin-top: 8px;
-}
-
-.ant-menu-light.ant-menu-submenu-popup > .ant-menu > li {
-  display: flex;
-  align-items: center;
-}
-
-.ant-menu-inline-collapsed > .ant-menu-item {
-  padding-inline: calc(50% - 15px - 4px);
-}
-
-.ant-menu .ant-menu-submenu > div {
-  display: flex;
-  align-items: center;
-}
-.ant-menu-submenu-title > .ant-menu-item-icon {
-  font-size: 40px;
-}
-:where(.css-dev-only-do-not-override-11lehqq).ant-menu-vertical
-  > .ant-menu-submenu
-  > .ant-menu-submenu-title
-  > .ant-menu-item-icon {
-  transform: scale(1.8);
-  transition: transform 0.4s ease-in;
-} */
-
-/* ------------------------------------ */
-/* Font and Global Reset                */
-/* ------------------------------------ */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 @tailwind base;
@@ -343,18 +88,6 @@ p {
 /* ------------------------------------ */
 /* Ant Design - Menu                    */
 /* ------------------------------------ */
-.ant-menu-item:hover {
-  background-color: #929396;
-}
-
-.ant-menu-item-selected {
-  background-color: #e8f6ff !important;
-  color: #18a0fb !important;
-}
-
-.ant-menu-light .ant-menu-item-selected a {
-  color: #18a0fb !important;
-}
 
 .ant-menu-title-content {
   color: black !important;
@@ -371,7 +104,7 @@ p {
 }
 
 .ant-menu .ant-menu-submenu-title {
-  color: black !important;
+  color: red !important;
 }
 
 .ant-menu .ant-menu-submenu-title .ant-menu-item-icon {
@@ -395,9 +128,13 @@ p {
 .ant-menu-inline-collapsed > .ant-menu-item {
   padding-inline: calc(50% - 15px - 4px);
 }
+.ant-menu-light.ant-menu-submenu-popup > .ant-menu > li {
+  display: flex;
+  align-items: center;
+}
 
-.ant-menu-inline-collapsed > .ant-menu-item .ant-menu-item-icon {
-  margin-top: 8px;
+.ant-menu-light.ant-menu-root.ant-menu-vertical > li {
+  display: flex;
 }
 
 .ant-menu-light.ant-menu-submenu-popup > .ant-menu > li {
@@ -416,8 +153,92 @@ p {
   color: #000;
 }
 
-.ant-menu-light .ant-menu-submenu-selected > .ant-menu-submenu-title {
-  color: white !important;
+/* NEW MENU STYLES FOR HOVER AND SELECTED STATES */
+/* Selected menu item styles */
+.ant-menu-item-selected {
+  background-color: #b0b9f7 !important;
+}
+
+.ant-menu-item-selected .ant-menu-title-content,
+.ant-menu-item-selected .ant-menu-title-content a {
+  color: #0100fa !important;
+}
+
+.ant-menu-item-selected .ant-menu-item-icon {
+  color: #0100fa !important;
+}
+
+/* Hover styles for menu items */
+.ant-menu-item:hover {
+  background-color: #b0b9f7 !important;
+}
+
+.ant-menu-item:hover .ant-menu-title-content,
+.ant-menu-item:hover .ant-menu-title-content a {
+  color: #0100fa !important;
+}
+
+.ant-menu-item:hover .ant-menu-item-icon {
+  color: #0100fa !important;
+}
+
+/* Submenu selected styles */
+.ant-menu-submenu-selected > .ant-menu-submenu-title {
+  background-color: #b0b9f7 !important;
+}
+
+.ant-menu-submenu-selected > .ant-menu-submenu-title,
+.ant-menu-submenu-selected > .ant-menu-submenu-title .ant-menu-title-content {
+  color: #0100fa !important;
+}
+
+.ant-menu-submenu-selected > .ant-menu-submenu-title .ant-menu-item-icon {
+  color: #0100fa !important;
+}
+
+.ant-menu-submenu-selected > .ant-menu-submenu-title .ant-menu-submenu-arrow {
+  color: #0100fa !important;
+}
+
+/* Submenu hover styles */
+.ant-menu-submenu:hover > .ant-menu-submenu-title {
+  background-color: #b0b9f7 !important;
+}
+
+.ant-menu-submenu:hover > .ant-menu-submenu-title,
+.ant-menu-submenu:hover > .ant-menu-submenu-title .ant-menu-title-content {
+  color: #0100fa !important;
+}
+
+.ant-menu-submenu:hover > .ant-menu-submenu-title .ant-menu-item-icon {
+  color: #0100fa !important;
+}
+
+.ant-menu-submenu:hover > .ant-menu-submenu-title .ant-menu-submenu-arrow {
+  color: #0100fa !important;
+}
+
+/* Submenu items in popup hover */
+.ant-menu-submenu-popup .ant-menu-item:hover {
+  background-color: #b0b9f7 !important;
+}
+
+.ant-menu-submenu-popup .ant-menu-item:hover .ant-menu-title-content,
+.ant-menu-submenu-popup .ant-menu-item:hover .ant-menu-title-content a {
+  color: #0100fa !important;
+}
+
+.ant-menu-submenu-popup .ant-menu-item:hover .ant-menu-item-icon {
+  color: #0100fa !important;
+}
+
+.ant-menu-light.ant-menu-root.ant-menu-vertical > li {
+  display: flex;
+  align-items: center;
+}
+
+.ant-menu-inline-collapsed > .ant-menu-item .ant-menu-item-icon {
+  margin-left: calc(4px * 2); /* Same as 8px */
 }
 
 /* ------------------------------------ */
@@ -425,7 +246,7 @@ p {
 /* ------------------------------------ */
 .ant-pagination .ant-pagination-item-active {
   font-weight: 600;
-  background-color: #18a0fb;
+  background-color: #0100fa;
   border: none !important;
   color: #ffffff !important;
 }
@@ -437,7 +258,7 @@ p {
 
 .ant-pagination .ant-pagination-item a:hover {
   background-color: white !important;
-  color: black !important;
+  color: #0100fa !important;
 }
 
 :where(.css-dev-only-do-not-override-1p39ys8).ant-pagination

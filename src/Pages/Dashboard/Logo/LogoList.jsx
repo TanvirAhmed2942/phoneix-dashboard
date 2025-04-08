@@ -152,10 +152,6 @@ function Logo() {
             headerBorderRadius: "none",
             cellFontSize: "16px",
           },
-          Pagination: {
-            borderRadius: "3px",
-            itemActiveBg: "#18a0fb",
-          },
           Form: {
             labelFontSize: 16,
           },
@@ -172,15 +168,7 @@ function Logo() {
           <h1 className="text-[20px] font-medium">{GetPageName()}</h1>
         </div>
 
-        <Table
-          columns={columns}
-          dataSource={tableData}
-          pagination={{
-            pageSizeOptions: [5, 10, 15, 20],
-            defaultPageSize: 5,
-            position: ["bottomCenter"],
-          }}
-        />
+        <Table columns={columns} dataSource={tableData} pagination={false} />
 
         {/* Delete Confirmation Modal */}
         <Modal
