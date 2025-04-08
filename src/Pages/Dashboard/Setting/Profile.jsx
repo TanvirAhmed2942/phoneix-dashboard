@@ -21,80 +21,66 @@ function Profile() {
   };
 
   return (
-    <ConfigProvider
-      theme={{
-        components: {
-          Button: {
-            defaultActiveColor: "#ffffff",
-            defaultActiveBorderColor: "#49b0f1",
-            defaultActiveBg: "#49b0f1",
-            defaultHoverBg: "#49b0f1",
-            defaultHoverColor: "#ffffff",
-          },
-        },
-      }}
-    >
-      <div className="bg-quilocoP w-[50%] min-h-72 flex flex-col justify-start items-center px-4 border bg-white rounded-lg">
-        <div className="relative mt-6 flex flex-col items-center justify-center">
-          <img
-            src={
-              uploadedImage
-                ? URL.createObjectURL(uploadedImage)
-                : user?.image
-                ? `${imageUrl}${user.image}`
-                : man
-            }
-            width={120}
-            height={120}
-            className="border border-slate-500 rounded-full object-cover"
-          />
-          {showButton && (
-            <Upload
-              showUploadList={false}
-              beforeUpload={(file) => {
-                const isImage = file.type.startsWith("image/");
-                if (!isImage) {
-                  message.error("You can only upload image files!");
-                  return Upload.LIST_IGNORE;
-                }
-                setUploadedImage(file);
-                return false;
-              }}
-            >
-              <button>
-                <MdCameraEnhance
-                  size={30}
-                  className="text-white absolute top-20 left-24 border rounded-full bg-smart p-1"
-                />
-              </button>
-            </Upload>
-          )}
-          <h3 className="text-slate-50 text-xl mt-3">{user.name}</h3>
-        </div>
-        <div className="w-full flex justify-end">
-          <Button
-            onClick={() => {
-              setShowButton(!showButton);
-              if (!showButton) setUploadedImage(null);
-            }}
-            icon={
-              showButton ? null : (
-                <HiMiniPencil size={20} className="text-white" />
-              )
-            }
-            className="bg-smart/80 border-none text-white min-w-20 min-h-8 text-xs rounded-lg"
-          >
-            {showButton ? "Cancel" : "Edit Profile"}
-          </Button>
-        </div>
-        <ProfileDetails
-          showButton={showButton}
-          setShowButton={setShowButton}
-          user={user}
-          uploadedImage={uploadedImage}
+    <div className="bg-quilocoP w-full min-h-72 flex flex-col justify-start items-center px-4 border bg-white rounded-lg">
+      <div className="relative mt-6 flex flex-col items-center justify-center">
+        <img
+          src={
+            uploadedImage
+              ? URL.createObjectURL(uploadedImage)
+              : user?.image
+              ? `${imageUrl}${user.image}`
+              : man
+          }
+          width={120}
+          height={120}
+          className="border border-slate-500 rounded-full object-cover"
         />
+        {showButton && (
+          <Upload
+            showUploadList={false}
+            beforeUpload={(file) => {
+              const isImage = file.type.startsWith("image/");
+              if (!isImage) {
+                message.error("You can only upload image files!");
+                return Upload.LIST_IGNORE;
+              }
+              setUploadedImage(file);
+              return false;
+            }}
+          >
+            <button>
+              <MdCameraEnhance
+                size={30}
+                className="text-white absolute top-20 left-24 border rounded-full bg-smart p-1"
+              />
+            </button>
+          </Upload>
+        )}
+        <h3 className="text-slate-50 text-xl mt-3">{user.name}</h3>
       </div>
-    </ConfigProvider>
+      <div className="w-full flex justify-end">
+        <Button
+          onClick={() => {
+            setShowButton(!showButton);
+            if (!showButton) setUploadedImage(null);
+          }}
+          icon={
+            showButton ? null : (
+              <HiMiniPencil size={20} className="text-white" />
+            )
+          }
+          className="bg-smart/80 border-none text-white min-w-20 min-h-8 text-xs rounded-lg"
+        >
+          {showButton ? "Cancel" : "Edit Profile"}
+        </Button>
+      </div>
+      <ProfileDetails
+        showButton={showButton}
+        setShowButton={setShowButton}
+        user={user}
+        uploadedImage={uploadedImage}
+      />
+    </div>
   );
 }
 
@@ -144,13 +130,6 @@ const ProfileDetails = ({ showButton, setShowButton, user, uploadedImage }) => {
     <ConfigProvider
       theme={{
         components: {
-          Button: {
-            defaultActiveColor: "#ffffff",
-            defaultActiveBorderColor: "#49b0f1",
-            defaultActiveBg: "#49b0f1",
-            defaultHoverBg: "#49b0f1",
-            defaultHoverColor: "#ffffff",
-          },
           Form: {
             labelColor: "#efefef",
           },

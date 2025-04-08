@@ -99,17 +99,7 @@ const CategorySubcategoryForm = ({ isSelected, initialData = null }) => {
   };
 
   return (
-    <ConfigProvider
-      theme={{
-        components: {
-          Segmented: {
-            itemHoverBg: "#0100fa",
-            trackBg: "#0100fa",
-            itemColor: "white",
-          },
-        },
-      }}
-    >
+    <>
       <Segmented
         options={["Category", "Sub Category"]}
         block
@@ -121,6 +111,7 @@ const CategorySubcategoryForm = ({ isSelected, initialData = null }) => {
         <div className="w-2/3 mt-4">
           <Form
             form={form}
+            className="bg-white p-4 border rounded-lg"
             name="categoryForm"
             layout="vertical"
             onFinish={onFinish}
@@ -227,7 +218,10 @@ const CategorySubcategoryForm = ({ isSelected, initialData = null }) => {
             </Form.Item>
 
             <Form.Item>
-              <Button type="primary" htmlType="submit">
+              <Button
+                htmlType="submit"
+                className="bg-smart/80 border-none text-white min-w-20 min-h-10 text-xs rounded-lg"
+              >
                 Add {selected}
               </Button>
             </Form.Item>
@@ -282,7 +276,7 @@ const CategorySubcategoryForm = ({ isSelected, initialData = null }) => {
           </div>
         </div>
       </div>
-    </ConfigProvider>
+    </>
   );
 };
 

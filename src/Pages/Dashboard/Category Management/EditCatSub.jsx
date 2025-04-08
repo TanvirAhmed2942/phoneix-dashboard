@@ -94,17 +94,7 @@ const EditCatSub = ({ isSelected, initialData = null }) => {
   };
 
   return (
-    <ConfigProvider
-      theme={{
-        components: {
-          Segmented: {
-            itemHoverBg: "#0100fa",
-            trackBg: "#0100fa",
-            itemColor: "white",
-          },
-        },
-      }}
-    >
+    <>
       <Segmented
         options={["Category", "Sub Category"]}
         block
@@ -120,6 +110,7 @@ const EditCatSub = ({ isSelected, initialData = null }) => {
             layout="vertical"
             onFinish={onFinish}
             autoComplete="off"
+            className="bg-white p-4 border rounded-lg"
           >
             {/* Category Form Fields */}
 
@@ -132,7 +123,7 @@ const EditCatSub = ({ isSelected, initialData = null }) => {
             </Form.Item>
 
             {/* Subcategory Form Fields */}
-            {selected === "Sub Category" && (
+            {selected === "Sub Category" ? (
               <>
                 <Form.Item
                   label="Select Sub Category"
@@ -160,6 +151,19 @@ const EditCatSub = ({ isSelected, initialData = null }) => {
                   <Input />
                 </Form.Item>
               </>
+            ) : (
+              <Form.Item
+                label="Category Name"
+                name="categoryName"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please enter the Category name!",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
             )}
 
             <Form.Item
@@ -204,7 +208,10 @@ const EditCatSub = ({ isSelected, initialData = null }) => {
             </Form.Item>
 
             <Form.Item>
-              <Button type="primary" htmlType="submit">
+              <Button
+                htmlType="submit"
+                className="bg-smart/80 border-none text-white min-w-20 min-h-10 text-xs rounded-lg"
+              >
                 Add {selected}
               </Button>
             </Form.Item>
@@ -247,7 +254,7 @@ const EditCatSub = ({ isSelected, initialData = null }) => {
           </div>
         </div>
       </div>
-    </ConfigProvider>
+    </>
   );
 };
 

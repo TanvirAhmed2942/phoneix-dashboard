@@ -1,50 +1,57 @@
-import React from "react";
-import { Tabs, ConfigProvider } from "antd";
+import React, { useState } from "react";
+import { ConfigProvider, Segmented } from "antd";
 import AdminList from "./AdminList";
 import AdminPassword from "./AdminPassword";
 import Profile from "./Profile";
 
-const onChange = (key) => {
-  console.log(key);
-};
-const items = [
-  {
-    key: "admin",
-    label: "Admin",
-    children: <AdminList />,
-  },
-  {
-    key: "password",
-    label: "Password",
-    children: <AdminPassword />,
-  },
-  {
-    key: "rofile",
-    label: "Profile",
-    children: <Profile />,
-  },
-];
 function Setting() {
+  const [selected, setSelected] = useState("Admin");
+
+  const handleSegmentChange = (value) => {
+    setSelected(value);
+    console.log(value);
+  };
+
+  const renderContent = () => {
+    switch (selected) {
+      case "Admin":
+        return <AdminList />;
+      case "Password":
+        return <AdminPassword />;
+      case "Profile":
+        return <Profile />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <ConfigProvider
       theme={{
         components: {
-          Tabs: {
-            inkBarColor: "#18a0fb",
-            itemHoverColor: "black",
-            itemSelectedColor: "#18a0fb",
-            titleFontSize: "18px",
-            horizontalMargin: "0 0 30px 0",
+          Segmented: {
+            itemHoverBg: "#3b55ff",
+            itemHoverColor: "white",
+            trackBg: "#0100fa",
+            itemColor: "white",
+            itemSelectedColor: "black",
+            fontSize: 18,
           },
         },
       }}
     >
-      <Tabs
-        defaultActiveKey="1"
-        items={items}
-        onChange={onChange}
-        className="py-8 font-medium"
-      />
+      <div className="py-8 font-medium w-1/2">
+        <div className="w-full">
+          <Segmented
+            options={["Admin", "Password", "Profile"]}
+            value={selected}
+            onChange={handleSegmentChange}
+            block
+            className="mb-6 border border-[#0100fa]"
+          />
+        </div>
+        {renderContent()}
+      </div>
     </ConfigProvider>
   );
 }

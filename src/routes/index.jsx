@@ -10,7 +10,6 @@ import VerifyOtp from "../Pages/Auth/VerifyOtp";
 import ResetPassword from "../Pages/Auth/ResetPassword";
 import NotFound from "../NotFound";
 import Notifications from "../Pages/Dashboard/Notifications";
-import AdminProfile from "../Pages/Dashboard/AdminProfile/AdminProfile";
 import TermsAndCondition from "../Pages/Dashboard/TermsAndCondition/TermsAndCondition";
 import Transaction from "../Pages/Dashboard/Transaction/Transaction.jsx";
 import Setting from "../Pages/Dashboard/Setting/Setting.jsx";
@@ -87,10 +86,6 @@ const router = createBrowserRouter([
         element: <TermsAndCondition />,
       },
 
-      {
-        path: "/profile",
-        element: <AdminProfile />,
-      },
       {
         path: "/notification",
         element: <Notifications />,

@@ -3,6 +3,7 @@ import { ConfigProvider, Segmented } from "antd";
 import CategorySubcategoryForm from "./CategorySubcategoryForm";
 import CategoryList from "./CategoryList";
 import EditCatSub from "./EditCatSub";
+import DeleteCatSub from "./DeleteCatSub";
 
 function CategoryManagement() {
   // Default selected value is set to "Quick View"
@@ -21,34 +22,24 @@ function CategoryManagement() {
         return <CategorySubcategoryForm />;
       case "Edit":
         return <EditCatSub isSelected={selected} />;
+      case "Delete":
+        return <DeleteCatSub isSelected={selected} />;
       default:
         return <div>Default</div>;
     }
   };
 
   return (
-    <ConfigProvider
-      theme={{
-        components: {
-          Segmented: {
-            itemHoverBg: "#0ea5e9",
-            trackBg: "#0ea5e9",
-            itemColor: "white",
-          },
-        },
-      }}
-    >
-      <div>
-        <Segmented
-          options={["Quick View", "Add New", "Edit", "Delete"]}
-          block
-          className="border border-smart mb-4"
-          onChange={handleSelected}
-          value={selected}
-        />
-        <ControlView />
-      </div>
-    </ConfigProvider>
+    <div>
+      <Segmented
+        options={["Quick View", "Add New", "Edit", "Delete"]}
+        block
+        className="border border-smart mb-4"
+        onChange={handleSelected}
+        value={selected}
+      />
+      <ControlView />
+    </div>
   );
 }
 

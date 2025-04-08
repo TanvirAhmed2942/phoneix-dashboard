@@ -160,7 +160,7 @@ const AdminList = () => {
   };
 
   return (
-    <div className="w-[60%] bg-white rounded-lg shadow-lg p-5">
+    <div className="w-full bg-white rounded-lg shadow-lg p-5">
       <TableHead
         searchText={searchText}
         handleSearch={handleSearch}
