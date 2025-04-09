@@ -68,7 +68,7 @@ function Report() {
           <Button
             icon={<FaSortAmountDown />}
             onClick={handleSortByDate} // Sort on click
-            className="bg-white text-black border-none h-9"
+            className="bg-smart text-white border-none h-9"
           >
             Sort by Date
           </Button>

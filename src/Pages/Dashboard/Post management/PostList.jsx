@@ -91,7 +91,7 @@ function PostList() {
             placeholder="Search by Title or Author"
             onChange={(e) => handleSearch(e.target.value)}
             prefix={<SearchOutlined />}
-            className="h-[37px] gap-2 border"
+            className="h-[47px] gap-2 border"
             allowClear
           />
           {selectedRowKeys.length > 0 && (

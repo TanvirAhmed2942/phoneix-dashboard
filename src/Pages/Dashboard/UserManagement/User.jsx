@@ -76,7 +76,7 @@ function User() {
             placeholder="Search by Name, Email or Phone"
             onChange={(e) => handleSearch(e.target.value)}
             prefix={<SearchOutlined />}
-            className="h-[37px] gap-2 border"
+            className="h-[47px] gap-2 border"
             allowClear
           />
           {selectedRowKeys.length > 0 && (

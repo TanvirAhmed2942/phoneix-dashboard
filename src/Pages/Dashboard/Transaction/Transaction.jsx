@@ -208,7 +208,7 @@ function Head({ onSearch, selectedRowKeys, handleDelete, filteredData }) {
           placeholder="Search by Recipient, Occasion, Price, or Status"
           onChange={(e) => onSearch(e.target.value)}
           prefix={<SearchOutlined />}
-          className="h-[38px] gap-2"
+          className="h-[47px] gap-2"
           allowClear
         />
 
@@ -216,7 +216,7 @@ function Head({ onSearch, selectedRowKeys, handleDelete, filteredData }) {
           <Button
             onClick={handleDelete}
             icon={<DeleteOutlined />}
-            className="bg-[#18a0fb] text-white border-none h-9"
+            className="bg-smart text-white border-none h-9"
           >
             {selectedRowKeys.length === filteredData.length
               ? "Delete All"
