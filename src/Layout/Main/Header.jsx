@@ -77,7 +77,7 @@ const Header = ({ toggleSidebar }) => {
             arrow={false}
             placement="bottom"
           >
-            <div className="w-14 h-14 bg-[#cfd4ff] flex items-center justify-center rounded-md relative cursor-pointer">
+            <div className="w-12 h-12 bg-[#cfd4ff] flex items-center justify-center rounded-md relative cursor-pointer">
               <FaRegBell size={30} className="text-smart" />
               <Badge
                 count={2}
