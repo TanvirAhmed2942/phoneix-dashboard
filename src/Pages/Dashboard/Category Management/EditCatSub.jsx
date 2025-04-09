@@ -94,16 +94,16 @@ const EditCatSub = ({ isSelected, initialData = null }) => {
   };
 
   return (
-    <>
+    <div className="flex flex-col items-center justify-center w-full">
       <Segmented
         options={["Category", "Sub Category"]}
         block
-        className="border border-smart mb-4"
+        className="border border-smart mb-4 w-1/2"
         onChange={handleSelected}
         value={selected}
       />
-      <div className="w-full flex gap-4">
-        <div className="w-2/3 mt-4">
+      <div className="w-1/2 flex gap-4">
+        <div className="w-full mt-4">
           <Form
             form={form}
             name="categoryForm"
@@ -191,7 +191,7 @@ const EditCatSub = ({ isSelected, initialData = null }) => {
               </Upload>
             </Form.Item>
 
-            <Form.Item
+            {/* <Form.Item
               label={
                 selected === "Category"
                   ? "Category Description"
@@ -205,7 +205,7 @@ const EditCatSub = ({ isSelected, initialData = null }) => {
               ]}
             >
               <Input.TextArea rows={4} />
-            </Form.Item>
+            </Form.Item> */}
 
             <Form.Item>
               <Button
@@ -217,7 +217,7 @@ const EditCatSub = ({ isSelected, initialData = null }) => {
             </Form.Item>
           </Form>
         </div>
-
+        {/* 
         <div className="w-1/3 mt-4">
           <div className="border-2 rounded-lg border-green-700 p-4 flex flex-col gap-4">
             <p>
@@ -252,9 +252,9 @@ const EditCatSub = ({ isSelected, initialData = null }) => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
-    </>
+    </div>
   );
 };
 

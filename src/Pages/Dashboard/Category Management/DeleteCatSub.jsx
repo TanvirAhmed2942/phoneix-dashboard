@@ -54,16 +54,17 @@ const DeleteCatSub = ({ isSelected, initialData = null }) => {
   };
 
   return (
-    <>
+    <div className="flex flex-col items-center justify-center w-full">
       <Segmented
         options={["Category", "Sub Category"]}
         block
-        className="border border-smart mb-4"
+        vertical
+        className="border border-smart mb-4 w-1/2"
         onChange={handleSelected}
         value={selected}
       />
-      <div className="w-full flex gap-4">
-        <div className="w-2/3 mt-4">
+      <div className="w-1/2 flex gap-4">
+        <div className="w-full mt-4">
           <Form
             form={form}
             name="deleteCategoryForm"
@@ -103,16 +104,18 @@ const DeleteCatSub = ({ isSelected, initialData = null }) => {
               </Button>
             </Form.Item>
           </Form>
-          <div className="flex items-center gap-2 mt-4">
-            <MdInfo size={25} className="text-yellow-500" />
-            <p>
-              If you delete a Category all the sub category under the category
-              will be deleted
-            </p>
-          </div>
+          {selected !== "Sub Category" ? (
+            <div className="flex items-center gap-2 mt-4">
+              <MdInfo size={25} className="text-yellow-500" />
+              <p>
+                If you delete a Category all the sub category under the category
+                will be deleted
+              </p>
+            </div>
+          ) : null}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

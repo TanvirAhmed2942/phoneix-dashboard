@@ -13,7 +13,6 @@ import NotFound from "../NotFound";
 import TermsAndCondition from "../Pages/Dashboard/TermsAndCondition/TermsAndCondition";
 import Transaction from "../Pages/Dashboard/Transaction/Transaction.jsx";
 import Setting from "../Pages/Dashboard/Setting/Setting.jsx";
-import FaqCollapse from "../Pages/Dashboard/FAQ/FaqCollapse.jsx";
 import Contact from "../Pages/Dashboard/Contact/Contact.jsx";
 import Report from "../Pages/Dashboard/Report/Report.jsx";
 import User from "../Pages/Dashboard/UserManagement/User.jsx";
@@ -23,6 +22,7 @@ import Announcement from "../Pages/Dashboard/Announcement/Announcement.jsx";
 import Logo from "../Pages/Dashboard/Logo/LogoList.jsx";
 import CategoryManagement from "../Pages/Dashboard/Category Management/CategoryManagement.jsx";
 import Notifications from "../Pages/Dashboard/Notification/Notifications.jsx";
+import CategoryFAQ from "../Pages/Dashboard/FAQ/CategoryFAQ.jsx";
 
 const router = createBrowserRouter([
   {
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/faq",
-        element: <FaqCollapse />,
+        element: <CategoryFAQ />,
       },
 
       {
