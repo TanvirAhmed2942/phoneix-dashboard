@@ -56,7 +56,7 @@ function CategoryList() {
   };
 
   return (
-    <div>
+    <div className="w-1/2 ">
       <Tree
         showLine
         switcherIcon={<DownOutlined />}

@@ -51,7 +51,7 @@ function Profile() {
             <button>
               <MdCameraEnhance
                 size={30}
-                className="text-white absolute top-20 left-24 border rounded-full bg-smart p-1"
+                className="text-white absolute top-[4.5rem] left-[4.5rem] border rounded-full bg-smart p-1"
               />
             </button>
           </Upload>

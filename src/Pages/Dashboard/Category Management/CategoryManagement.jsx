@@ -30,11 +30,11 @@ function CategoryManagement() {
   };
 
   return (
-    <div>
+    <div className="w-full h-full flex flex-col items-center ">
       <Segmented
         options={["Quick View", "Add New", "Edit", "Delete"]}
         block
-        className="border border-smart mb-4"
+        className="border border-smart mb-4 w-1/2"
         onChange={handleSelected}
         value={selected}
       />

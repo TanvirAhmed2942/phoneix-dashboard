@@ -30,14 +30,14 @@ const Header = ({ toggleSidebar }) => {
         to="/settings"
         className="flex items-center gap-2 py-1 mt-1  text-black hover:text-smart"
       >
-        <RiSettings5Line className="animate-spin " />
+        <RiSettings5Line className="text-gray-400 animate-spin " />
         <span>Setting</span>
       </Link>
       <Link
         to="/auth/login"
         className="flex items-center gap-2 py-1  text-black hover:text-smart"
       >
-        <RiShutDownLine />
+        <RiShutDownLine className="text-red-500 animate-pulse" />
         <span>Log Out</span>
       </Link>
     </div>
