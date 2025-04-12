@@ -156,16 +156,16 @@ function Announcement() {
       key: "announcementImg",
       render: (img) => <img src={img} alt="img" width={60} />,
     },
-    {
-      title: "Title",
-      dataIndex: "announcementTitle",
-      key: "announcementTitle",
-    },
-    {
-      title: "Description",
-      dataIndex: "announcementDescription",
-      key: "announcementDescription",
-    },
+    // {
+    //   title: "Title",
+    //   dataIndex: "announcementTitle",
+    //   key: "announcementTitle",
+    // },
+    // {
+    //   title: "Description",
+    //   dataIndex: "announcementDescription",
+    //   key: "announcementDescription",
+    // },
     {
       title: "Status",
       dataIndex: "status",
