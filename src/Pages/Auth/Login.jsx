@@ -1,15 +1,34 @@
-import { Button, Checkbox, Form, Input } from "antd";
+import { Checkbox, Form, Input, message } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import FormItem from "../../components/common/FormItem";
+import { useLoginMutation } from "../../redux/apiSlices/authApi";
+import Spinner from "../../components/common/Spinner";
 // import Cookies from "js-cookie";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [login, { isLoading }] = useLoginMutation();
 
   const onFinish = async (values) => {
-    navigate("/");
-    // Cookies.set('token', token, { expires: 7 })
+    try {
+      const res = await login(values).unwrap();
+
+      // Assuming the response contains a token and user info
+      // const { accessToken, user } = res;
+      console.log("Login response:", res?.data?.accessToken);
+      console.log("Login response:", res);
+
+      localStorage.setItem("accessToken", res?.data?.accessToken);
+
+      // Show success message
+      message.success("Login successful!");
+
+      // Navigate to dashboard or desired page
+      navigate("/");
+    } catch (error) {
+      console.error("Login failed:", error);
+      message.error(error);
+    }
   };
 
   return (
@@ -27,12 +46,12 @@ const Login = () => {
           rules={[
             {
               required: true,
-              message: `Please Enter your email`,
+              message: `Please enter your email`,
             },
           ]}
         >
           <Input
-            placeholder={`Enter Your email`}
+            placeholder={`Enter your email`}
             style={{
               height: 45,
               border: "1px solid #d9d9d9",
@@ -48,12 +67,11 @@ const Login = () => {
           rules={[
             {
               required: true,
-              message: "Please input your Password!",
+              message: "Please input your password!",
             },
           ]}
         >
           <Input.Password
-            type="password"
             placeholder="Enter your password"
             style={{
               height: 45,
@@ -85,18 +103,18 @@ const Login = () => {
           <button
             htmlType="submit"
             type="submit"
+            disabled={isLoading}
             style={{
               width: "100%",
               height: 47,
               color: "white",
               fontWeight: "400px",
               fontSize: "18px",
-
               marginTop: 20,
             }}
             className="flex items-center justify-center bg-smart hover:bg-smart/90 rounded-lg text-base"
           >
-            {/* {isLoading? < Spinner/> : "Sign in"} */} Sign in
+            {isLoading ? <Spinner label="Signing in..." /> : "Sign in"}
           </button>
         </Form.Item>
       </Form>

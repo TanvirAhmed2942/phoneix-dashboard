@@ -3,14 +3,13 @@ import { CgTemplate } from "react-icons/cg";
 import { Menu } from "antd";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { TbCategory2, TbDashboard } from "react-icons/tb";
 import { BsFilePost } from "react-icons/bs";
 import { SiAntdesign } from "react-icons/si";
 import { HiUsers } from "react-icons/hi";
 import { RxDashboard } from "react-icons/rx";
 import { PiWallet } from "react-icons/pi";
 import { FiLogOut } from "react-icons/fi";
-import { RiContactsBook3Line, RiSettings5Line } from "react-icons/ri";
+import { RiContactsBook3Line } from "react-icons/ri";
 import { MdCategory, MdOutlineReportProblem } from "react-icons/md";
 import { MdOutlinePrivacyTip } from "react-icons/md";
 import { IoDocumentTextOutline } from "react-icons/io5";
@@ -24,7 +23,7 @@ const Sidebar = ({ isCollapsed }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("accessToken");
     navigate("/auth/login");
   };
 
@@ -94,32 +93,17 @@ const Sidebar = ({ isCollapsed }) => {
           key: "/privacy-policy",
 
           icon: <MdOutlinePrivacyTip size={24} />,
-          label: (
-            <Link to="/privacy-policy" className="text-white hover:text-white">
-              Privacy Policy
-            </Link>
-          ),
+          label: <Link to="/privacy-policy">Privacy Policy</Link>,
         },
         {
           key: "/terms-and-conditions",
           icon: <IoDocumentTextOutline size={24} />,
-          label: (
-            <Link
-              to="/terms-and-conditions"
-              className="text-white hover:text-white"
-            >
-              Terms And Condition
-            </Link>
-          ),
+          label: <Link to="/terms-and-conditions">Terms And Condition</Link>,
         },
         {
           key: "/faq",
           icon: <FaQuoteRight size={24} />,
-          label: (
-            <Link to="/faq" className="text-white hover:text-white">
-              FAQ
-            </Link>
-          ),
+          label: <Link to="/faq">FAQ</Link>,
         },
         {
           key: "/announcement",
@@ -142,20 +126,12 @@ const Sidebar = ({ isCollapsed }) => {
         {
           key: "/logo",
           icon: <SiAntdesign size={24} />,
-          label: (
-            <Link to="/logo" className="text-white hover:text-white">
-              Logo
-            </Link>
-          ),
+          label: <Link to="/logo">Logo</Link>,
         },
         {
           key: "/contact",
           icon: <RiContactsBook3Line size={24} />,
-          label: (
-            <Link to="/contact" className="text-white hover:text-white">
-              Contact Us
-            </Link>
-          ),
+          label: <Link to="/contact">Contact Us</Link>,
         },
       ],
     },
@@ -163,11 +139,7 @@ const Sidebar = ({ isCollapsed }) => {
     {
       key: "/logout",
       icon: <FiLogOut size={24} />,
-      label: isCollapsed ? null : (
-        <p onClick={handleLogout} className="text-black hover:text-black">
-          Logout
-        </p>
-      ),
+      label: isCollapsed ? null : <Link onClick={handleLogout}>Logout</Link>,
     },
   ];
 

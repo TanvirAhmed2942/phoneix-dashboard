@@ -354,7 +354,7 @@ const TableHead = ({ searchText, handleSearch, onAdd }) => {
         allowClear
       />
       <ButtonEDU actionType="add" onClick={onAdd}>
-        <div className="flex items-center justify-center gap-2">
+        <div className="flex items-center justify-center gap-2 ">
           <FaPlus size={15} /> Add new
         </div>
       </ButtonEDU>

@@ -6,7 +6,7 @@ const authSlice = api.injectEndpoints({
       query: (data) => {
         return {
           method: "POST",
-          url: "/auth/otp-verify",
+          url: "/auth/verify-otp",
           body: data,
         };
       },
@@ -31,7 +31,7 @@ const authSlice = api.injectEndpoints({
       query: (data) => {
         return {
           method: "POST",
-          url: "/auth/forgot-password",
+          url: "/auth/forget-password",
           body: data,
         };
       },
@@ -42,6 +42,9 @@ const authSlice = api.injectEndpoints({
           method: "POST",
           url: "/auth/reset-password",
           body: value,
+          headers: {
+            Authorization: localStorage.getItem("otpSuccessToken"),
+          },
         };
       },
     }),
@@ -51,11 +54,6 @@ const authSlice = api.injectEndpoints({
           method: "POST",
           url: "/auth/change-password",
           body: data,
-          headers: {
-            Authorization: `Bearer ${JSON.parse(
-              localStorage.getItem("token")
-            )}`,
-          },
         };
       },
     }),

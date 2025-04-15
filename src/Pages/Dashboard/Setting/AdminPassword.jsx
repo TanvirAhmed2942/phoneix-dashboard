@@ -2,9 +2,13 @@ import React from "react";
 import { Form, Input, Flex, ConfigProvider, message } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import ButtonEDU from "../../../components/common/ButtonEDU";
+import { useChangePasswordMutation } from "../../../redux/apiSlices/authApi";
+import { useNavigate } from "react-router-dom";
 
 function AdminPassword() {
   const [form] = Form.useForm();
+  const navigate = useNavigate();
+  const [changePassword, { isLoading, isError }] = useChangePasswordMutation();
 
   const handleCancel = () => {
     form.resetFields();
@@ -20,8 +24,19 @@ function AdminPassword() {
         confirmPassword: values.confirmPassword.trim(),
       };
 
-      console.log("Password Updated:", trimmedValues);
-      message.success("Password updated successfully!");
+      // Call the changePassword mutation with the trimmed values
+      const res = await changePassword({
+        currentPassword: trimmedValues.currentPassword,
+        newPassword: trimmedValues.newPassword,
+        confirmPassword: trimmedValues.confirmPassword,
+      }).unwrap();
+      console.log("Change Password:", res);
+      if (res?.success === true) {
+        message.success("Password updated successfully!");
+        navigate(`/auth/login`);
+      } else {
+        message.error("Failed to update password.");
+      }
       form.resetFields();
     } catch (error) {
       console.error("Validation failed:", error);

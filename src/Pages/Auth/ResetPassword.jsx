@@ -1,13 +1,29 @@
-import { Button, Form, Input, ConfigProvider } from "antd";
+import { Button, Form, Input, ConfigProvider, message } from "antd";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { useResetPasswordMutation } from "../../redux/apiSlices/authApi";
+import Spinner from "../../components/common/Spinner";
 
 const ResetPassword = () => {
   const email = new URLSearchParams(location.search).get("email");
   const navigate = useNavigate();
-
+  const [resetPassword, { isLoading, isError }] = useResetPasswordMutation();
   const onFinish = async (values) => {
-    navigate(`/auth/login`);
+    try {
+      const res = await resetPassword({
+        newPassword: values.newPassword,
+        confirmPassword: values.confirmPassword,
+      }).unwrap();
+
+      if (res?.success === true) {
+        message.success("Password reset successfully");
+        navigate("/auth/login");
+        localStorage.removeItem("otpSuccessToken");
+      }
+    } catch (error) {
+      console.error("Error resetting password:", error);
+      message.error("Error: ", error);
+    }
   };
 
   return (
@@ -116,7 +132,7 @@ const ResetPassword = () => {
               }}
               className="w-full bg-smart text-[18px] font-normal border-none text-white outline-none mt-4"
             >
-              Update
+              {isLoading ? <Spinner label="Updating..." /> : "Update"}
             </Button>
           </Form.Item>
         </Form>
